@@ -1,0 +1,280 @@
+
+#cart-view {
+    display: inline;
+    float: left;
+    width: 100%
+}
+
+#cart-view .cart-view-area {
+    display: inline;
+    float: left;
+    padding-top: 50px;
+    width: 100%
+}
+
+#cart-view .cart-view-area .cart-view-table {
+    background-color: #F5F5F5;
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 30px;
+    min-height: 350px
+}
+
+#cart-view .cart-view-area .cart-view-table .table {
+    border: 1px solid #ddd
+}
+
+#cart-view .cart-view-area .cart-view-table .table thead tr th {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    color: #555;
+    font-size: 18px;
+    padding: 20px 0;
+    text-align: center
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr td {
+    vertical-align: middle;
+    border-right: 1px solid #ccc;
+    text-align: center
+}
+.aa-add-to-cart-btn {
+    border: 1px solid #ccc;
+    color: #555;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    transition: all 0.5s ease 0s
+}
+
+.aa-add-to-cart-btn span {
+    margin-right: 5px
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr td .remove {
+    color: #ff0000;
+    padding: 5px
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr td .remove:hover {
+    color: #555
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr td img {
+    width: 80px;
+    height: 100px
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr td .aa-cart-quantity {
+    padding: 5px;
+    width: 50px
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom {
+    padding: 50px
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon {
+    float: left
+}
+
+#cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon .aa-coupon-code {
+    border: 1px solid #e5e5e5;
+    color: #505050;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 25px;
+    margin-right: 20px;
+    min-width: 250px;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total h4 {
+    color: #555;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 15px
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total .aa-totals-table {
+    border: 1px solid #ccc;
+    width: 100%
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total .aa-totals-table tr th {
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total .aa-totals-table tr td {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 10px
+}
+
+#cart-view .cart-view-area .cart-view-table .cart-view-total a {
+    margin-top: 30px;
+    display: inline-block;
+    float: none
+}
+
+/*ma nigga denzel--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+
+
+@media (max-width:1199px) {
+    
+}
+
+@media (max-width:991px) {
+    
+    .cart-view-table .table-responsive .aa-cart-view-bottom .aa-cart-view-btn {
+        float: none;
+        margin-top: 20px
+    }
+    
+}
+
+@media (max-width:767px) {
+    
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon {
+        float: none
+    }
+    .cart-view-table .table-responsive .aa-cart-view-bottom .aa-cart-view-btn {
+        float: none;
+        margin-top: 20px
+    }
+    #cart-view .cart-view-area .cart-view-table .aa-cart-view-btn {
+        font-size: 15px;
+        padding: 12px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom {
+        padding: 15px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon .aa-coupon-code {
+        font-size: 15px;
+        margin-right: 15px;
+        min-width: 100px;
+        padding: 12px;
+        width: 150px
+    }
+    
+}
+
+@media (max-width:640px) {
+    
+    #cart-view .cart-view-area .cart-view-table .table tbody tr td img {
+        height: 40px;
+        width: 40px
+    }
+    #cart-view .cart-view-area .cart-view-table .table thead tr th {
+        font-size: 16px;
+        padding: 10px 0
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr td {
+        font-size: 14px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon .aa-coupon-code {
+        font-size: 12px;
+        margin-right: 10px;
+        min-width: 100px;
+        padding: 8px;
+        width: 100px
+    }
+    #cart-view .cart-view-area .cart-view-table .aa-cart-view-btn {
+        font-size: 12px;
+        padding: 10px
+    }
+    #cart-view .cart-view-area .cart-view-table .cart-view-total h4 {
+        font-size: 20px
+    }
+    
+}
+
+@media (max-width:480px) {
+    
+    #cart-view .cart-view-area .aa-wishlist-table .table thead tr th {
+        font-size: 14px;
+        padding: 10px 0
+    }
+    
+}
+
+@media (max-width:360px) {
+    
+    #cart-view .cart-view-area .cart-view-table {
+        padding: 0 0 20px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr td img {
+        height: 15px;
+        width: 15px
+    }
+    #cart-view .cart-view-area .cart-view-table .table thead tr th {
+        font-size: 10px;
+        padding: 7px 0
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr td {
+        font-size: 14px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon .aa-coupon-code {
+        font-size: 12px;
+        margin-right: 10px;
+        min-width: 100px;
+        padding: 8px;
+        width: 100px
+    }
+    #cart-view .cart-view-area .cart-view-table .aa-cart-view-btn {
+        font-size: 12px;
+        padding: 10px
+    }
+    #cart-view .cart-view-area .cart-view-table .cart-view-total h4 {
+        font-size: 20px
+    }
+    #cart-view .cart-view-area .cart-view-table .cart-view-total {
+        width: auto
+    }
+    
+    #cart-view .cart-view-area .aa-wishlist-table .table thead tr th {
+        font-size: 14px;
+        padding: 10px 0
+    }
+    
+}
+
+@media (max-width:320px) {
+   
+    #cart-view .cart-view-area .cart-view-table .table tbody tr td {
+        font-size: 10px
+    }
+    #cart-view .cart-view-area .cart-view-table .aa-cart-view-btn {
+        font-size: 10px;
+        letter-spacing: 0.5px
+    }
+    #cart-view .cart-view-area .cart-view-table .table tbody tr .aa-cart-view-bottom .aa-cart-coupon .aa-coupon-code {
+        font-size: 10px;
+        min-width: auto;
+        padding: 6px;
+        width: 90px
+    }
+   
+}

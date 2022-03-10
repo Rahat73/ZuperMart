@@ -1,0 +1,123 @@
+﻿@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/Content/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/fontawesome.css">
+
+
+    <title>Zupermart</title>
+</head>
+<body>
+
+
+    <!-- Header -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="~/images/brand.png"><h2>Zuper <em>Mart</em></h2></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <!--here we will have our unordered list-->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Products", "Home")">Our Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="@Url.Action("About", "Home")">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img style="max-height:25px;" src="~/images/account.png">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @{
+                                    if (isLoggedIn)
+                                    {
+                                        <li><a class="dropdown-item" href="@Url.Action("ExclusiveProducts", "Home")">Exclusive Products</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("UserProfile", "Home")">Profile</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Wishlist", "Home")">Wishlist</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("SignOut", "Membership")">Logout</a></li>
+                                    }
+
+                                    else
+                                    {
+                                        <li><a class="dropdown-item" href="@Url.Action("SignUpIn", "Membership")">Login/Sign-Up</a></li>
+                                    }
+
+                                }
+
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--header ends-->
+    <div>@RenderBody()</div>
+    <!--footer-->
+    <footer>
+        <div class="container-fluid bg-dark p-md-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-content m-sm-5">
+                        <ul class="social-icons m-sm-3">
+                            <li><a href="https://www.facebook.com/zupermartbd" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li>
+                                <a href="https://api.whatsapp.com/send?phone=8801758535543&fbclid=IwAR2EjUOyETF9AsxWD7sNDDktkXU7z_V_lXLLyqIpkbR_36asLOqObjFqmxA" target="_blank">
+                                    <i class="fa fa-whatsapp"></i>
+                                </a>
+                            </li>
+                            <li><a href="https://www.youtube.com/channel/UC_AX5dZCKM2Ahr6BuOEQRGA" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://www.instagram.com/zupermartbd/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+
+                            <a href="@Url.Action("Team", "Home")">
+                                <button type="button" class="btn btn-light active" style="float:right">Credits</button>
+                            </a>
+                        </ul>
+
+
+                        <div class="copyright-text text-white text-center">
+                            &copy; Copyright 2021. All Rights Reserved
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!--footer-->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

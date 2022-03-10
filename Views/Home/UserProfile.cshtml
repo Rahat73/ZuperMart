@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "UserProfile";
+}
+<link href="~/Content/css/userProfile.css" rel="stylesheet" />
+<div class="Container">
+    <div class="matrix">
+        <div class="UserDetails col-lg-12 col-sm-6">
+            <div class="userImage">
+                <div class="col-md-6 col-lg-10">
+                    <img src="~/images/teams/mustavi.jpg" class="img-fluid rounded-circle" alt="user image">
+                </div>
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="example@gmail.com">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-mobile"></i>
+                <input type="text" id="phoneNumber" placeholder="880-17xxxxxxxx">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-location-arrow"></i>
+                <input type="password" id="address" placeholder="16/3 kazi ilias, zindabazar, sylhet-3100">
+            </div>
+
+            <div class="editButton">
+                <div class="col-md-9">
+                    <input type="button" class="btn" value="Edit Profile">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--div outside userdetails-->
+    <!-- <div class="container"> -->
+    <div class="editButton solobutton col-4">
+        <div class="col-md-9">
+            <input type="button" class="btn" value="Change Password">
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+<div class="empty"></div>
+
+

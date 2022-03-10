@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "SignUpIn";
+}
+
+<div class="container-fluid justify-content-center" id="login">
+    @{
+        if (@ViewBag.msg != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert" style="width: 50%; margin-left: 5%">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+                <div>
+                    @ViewBag.msg
+                </div>
+            </div>
+        }
+        if (@ViewBag.msg2 != null)
+        {
+            <div class="alert alert-success d-flex align-items-center" role="alert" style="width: 50%; margin-left: 5%">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                    <use xlink:href="#check-circle-fill" />
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </symbol>
+                </svg>
+                <div>
+                    @ViewBag.msg2
+                </div>
+            </div>
+        }
+        if (@ViewBag.msg3 != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert" style="width: 50%; margin-left: 5%">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+                <div>
+                    @ViewBag.msg3
+                </div>
+            </div>
+        }
+        if (@ViewBag.msg4 != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert" style="width: 50%; margin-left: 5%">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+                <div>
+                    @ViewBag.msg4
+                </div>
+            </div>
+        }
+        if (@ViewBag.success != null)
+        {
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">ZuperMart</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    @ViewBag.success
+                </div>
+            </div>
+        }
+
+    }
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <div class="card">
+                <h1 class="card-header">Log in</h1>
+                <div class="card-body">
+                    <form action="/Membership/SignIn" method="POST">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <!-- <label for="useremailInput" class="form-label">Email address</label>-->
+                            <input type="email" name="Email" class="form-control" id="Email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="userpasswordInput" class="form-label">Password</label>-->
+                            <input type="password" name="Password" class="form-control" id="Password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" name="loginbtn" value="Login" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="overflow: hidden;">
+        <div class="col-xl-6 col-sm-12" id="register">
+            <h2>
+                Did Not Register Yet?
+            </h2>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" id="registerButton" data-bs-toggle="modal" data-bs-target="#registerModal">
+                Register Now
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registerModalTitle">Register</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" onclick="document.getElementById('UserEmail').value='';document.getElementById('UserName').value='';document.getElementById('UserPassword').value='';document.getElementById('UserPhNum').value='';document.getElementById('UserCPassword').value='';indicoff()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="/Membership/SignUp" method="POST">
+                                @Html.AntiForgeryToken()
+                                <div class="mb-3">
+                                    <label for="UserName" class="col-form-laberl">User Name<span>*</span></label>
+                                    <input type="text" class="form-control" id="UserName" name="UserName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UserEmail" class="col-form-label">User Email<span>*</span></label>
+                                    <input type="email" class="form-control" id="Email" name="Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UserPhNum" class="col-form-label">User Number<span>*</span></label>
+                                    <input type="number" class="form-control" id="Phone" name="Phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UserPassword" class="col-form-label">User Password<span>*<div class="form-text">Password length must be 6 and must have digits,letters,characters</div></span></label>
+                                    <input onkeyup="trigger()" type="password" class="form-control" id="UserPassword" name="Password" required>
+                                </div>
+                                <div class="indicator" id="indicator">
+                                    <span class="weak"></span>
+                                    <span class="medium"></span>
+                                    <span class="strong"></span>
+                                </div>
+                                <div class="text"></div>
+                                <div class="mb-3">
+                                    <label for="UserCPassword" class="col-form-label">Confirm Password<span>*</span></label>
+                                    <input onkeyup="checkPass()" type="password" class="form-control" id="UserCPassword" name="RegisterCPassword" required>
+                                </div>
+                                <div class="textc"></div>
+                                <div class="mb-3">
+                                    <input type="submit" name="registerbtn" value="Register" class="btn btn-primary" id="reg" />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/js/index.js?version=2"></script>
+<div id="emptyField">
+
+</div>
+

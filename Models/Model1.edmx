@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ZuperMartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AboutUs">
+          <Key>
+            <PropertyRef Name="AboutUsID" />
+          </Key>
+          <Property Name="AboutUsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StorePURL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BrandPURL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AboutDesc" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="FounderPURL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FounderName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FounderDesc" Type="varchar" MaxLength="2048" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="WhatsApp" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LocationLink" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="FBURL" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="WAURL" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="YTURL" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="INSTAURL" Type="varchar" MaxLength="2048" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginPass" Type="text" Nullable="false" />
+          <Property Name="LastLogin" Type="date" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ActivationCode" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="SubmitDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PBrand" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PRating" Type="float" Nullable="false" />
+          <Property Name="PSold" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShowState" Type="int" Nullable="false" />
+          <Property Name="PrdImgUrl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="inStock" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PAddDate" Type="date" Nullable="false" />
+          <Property Name="shortDescription" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="longDescription" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="Exclusivity" Type="int" Nullable="false" />
+          <Property Name="sizeS" Type="int" Nullable="false" />
+          <Property Name="sizeM" Type="int" Nullable="false" />
+          <Property Name="sizeL" Type="int" Nullable="false" />
+          <Property Name="sizeXL" Type="int" Nullable="false" />
+          <Property Name="Sale" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductColor">
+          <Key>
+            <PropertyRef Name="ProductColorID" />
+          </Key>
+          <Property Name="ProductColorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Colors" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Availability" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductSpecification">
+          <Key>
+            <PropertyRef Name="ProductSpecificationSID" />
+          </Key>
+          <Property Name="ProductSpecificationSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Specifications" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamMember">
+          <Key>
+            <PropertyRef Name="TeamMemberID" />
+          </Key>
+          <Property Name="TeamMemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemStudentID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemFBlink" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemWAlink" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemLIlink" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemGHlink" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MemImgUrl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="WishlistID" />
+          </Key>
+          <Property Name="WishlistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="AddDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Message__Custome__25869641">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCo__Produ__286302EC">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductColor">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSp__Produ__2C3393D0">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductSpecification" Type="Self.ProductSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductSpecification">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__Custom__31EC6D26">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__Produc__30F848ED">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZuperMartModelStoreContainer">
+          <EntitySet Name="AboutUs" EntityType="Self.AboutUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductColor" EntityType="Self.ProductColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamMember" EntityType="Self.TeamMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Message__Custome__25869641" Association="Self.FK__Message__Custome__25869641">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCo__Produ__286302EC" Association="Self.FK__ProductCo__Produ__286302EC">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductColor" EntitySet="ProductColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSp__Produ__2C3393D0" Association="Self.FK__ProductSp__Produ__2C3393D0">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductSpecification" EntitySet="ProductSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__Custom__31EC6D26" Association="Self.FK__Wishlist__Custom__31EC6D26">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Wishlist" EntitySet="Wishlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__Produc__30F848ED" Association="Self.FK__Wishlist__Produc__30F848ED">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Wishlist" EntitySet="Wishlist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZuperMartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AboutU">
+          <Key>
+            <PropertyRef Name="AboutUsID" />
+          </Key>
+          <Property Name="AboutUsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StorePURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandPURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AboutDesc" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FounderPURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FounderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FounderDesc" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WhatsApp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationLink" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FBURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WAURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YTURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INSTAURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCode" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Custome__25869641" FromRole="Customer" ToRole="Message" />
+          <NavigationProperty Name="Wishlists" Relationship="Self.FK__Wishlist__Custom__31EC6D26" FromRole="Customer" ToRole="Wishlist" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message1" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubmitDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Message__Custome__25869641" FromRole="Message" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PBrand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRating" Type="Double" Nullable="false" />
+          <Property Name="PSold" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShowState" Type="Int32" Nullable="false" />
+          <Property Name="PrdImgUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inStock" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAddDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="shortDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longDescription" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exclusivity" Type="Int32" Nullable="false" />
+          <Property Name="sizeS" Type="Int32" Nullable="false" />
+          <Property Name="sizeM" Type="Int32" Nullable="false" />
+          <Property Name="sizeL" Type="Int32" Nullable="false" />
+          <Property Name="sizeXL" Type="Int32" Nullable="false" />
+          <Property Name="Sale" Type="Int32" />
+          <NavigationProperty Name="ProductColors" Relationship="Self.FK__ProductCo__Produ__286302EC" FromRole="Product" ToRole="ProductColor" />
+          <NavigationProperty Name="ProductSpecifications" Relationship="Self.FK__ProductSp__Produ__2C3393D0" FromRole="Product" ToRole="ProductSpecification" />
+          <NavigationProperty Name="Wishlists" Relationship="Self.FK__Wishlist__Produc__30F848ED" FromRole="Product" ToRole="Wishlist" />
+        </EntityType>
+        <EntityType Name="ProductColor">
+          <Key>
+            <PropertyRef Name="ProductColorID" />
+          </Key>
+          <Property Name="ProductColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Colors" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Availability" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductCo__Produ__286302EC" FromRole="ProductColor" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductSpecification">
+          <Key>
+            <PropertyRef Name="ProductSpecificationSID" />
+          </Key>
+          <Property Name="ProductSpecificationSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Specifications" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductSp__Produ__2C3393D0" FromRole="ProductSpecification" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="TeamMember">
+          <Key>
+            <PropertyRef Name="TeamMemberID" />
+          </Key>
+          <Property Name="TeamMemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemStudentID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemFBlink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemWAlink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemLIlink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemGHlink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemImgUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="WishlistID" />
+          </Key>
+          <Property Name="WishlistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Wishlist__Custom__31EC6D26" FromRole="Wishlist" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Wishlist__Produc__30F848ED" FromRole="Wishlist" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Message__Custome__25869641">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__Custom__31EC6D26">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCo__Produ__286302EC">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductColor">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSp__Produ__2C3393D0">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductSpecification" Type="Self.ProductSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductSpecification">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__Produc__30F848ED">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZuperMartEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AboutUs" EntityType="Self.AboutU" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductColors" EntityType="Self.ProductColor" />
+          <EntitySet Name="ProductSpecifications" EntityType="Self.ProductSpecification" />
+          <EntitySet Name="TeamMembers" EntityType="Self.TeamMember" />
+          <EntitySet Name="Wishlists" EntityType="Self.Wishlist" />
+          <AssociationSet Name="FK__Message__Custome__25869641" Association="Self.FK__Message__Custome__25869641">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__Custom__31EC6D26" Association="Self.FK__Wishlist__Custom__31EC6D26">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Wishlist" EntitySet="Wishlists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCo__Produ__286302EC" Association="Self.FK__ProductCo__Produ__286302EC">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductColor" EntitySet="ProductColors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSp__Produ__2C3393D0" Association="Self.FK__ProductSp__Produ__2C3393D0">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductSpecification" EntitySet="ProductSpecifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__Produc__30F848ED" Association="Self.FK__Wishlist__Produc__30F848ED">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Wishlist" EntitySet="Wishlists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZuperMartModelStoreContainer" CdmEntityContainer="ZuperMartEntities">
+          <EntitySetMapping Name="AboutUs">
+            <EntityTypeMapping TypeName="ZuperMartModel.AboutU">
+              <MappingFragment StoreEntitySet="AboutUs">
+                <ScalarProperty Name="AboutUsID" ColumnName="AboutUsID" />
+                <ScalarProperty Name="StorePURL" ColumnName="StorePURL" />
+                <ScalarProperty Name="BrandPURL" ColumnName="BrandPURL" />
+                <ScalarProperty Name="AboutDesc" ColumnName="AboutDesc" />
+                <ScalarProperty Name="FounderPURL" ColumnName="FounderPURL" />
+                <ScalarProperty Name="FounderName" ColumnName="FounderName" />
+                <ScalarProperty Name="FounderDesc" ColumnName="FounderDesc" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WhatsApp" ColumnName="WhatsApp" />
+                <ScalarProperty Name="LocationLink" ColumnName="LocationLink" />
+                <ScalarProperty Name="FBURL" ColumnName="FBURL" />
+                <ScalarProperty Name="WAURL" ColumnName="WAURL" />
+                <ScalarProperty Name="YTURL" ColumnName="YTURL" />
+                <ScalarProperty Name="INSTAURL" ColumnName="INSTAURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ZuperMartModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="LoginPass" ColumnName="LoginPass" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ZuperMartModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="ZuperMartModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ZuperMartModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PType" ColumnName="PType" />
+                <ScalarProperty Name="PBrand" ColumnName="PBrand" />
+                <ScalarProperty Name="PRating" ColumnName="PRating" />
+                <ScalarProperty Name="PSold" ColumnName="PSold" />
+                <ScalarProperty Name="ShowState" ColumnName="ShowState" />
+                <ScalarProperty Name="PrdImgUrl" ColumnName="PrdImgUrl" />
+                <ScalarProperty Name="inStock" ColumnName="inStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PAddDate" ColumnName="PAddDate" />
+                <ScalarProperty Name="shortDescription" ColumnName="shortDescription" />
+                <ScalarProperty Name="longDescription" ColumnName="longDescription" />
+                <ScalarProperty Name="Exclusivity" ColumnName="Exclusivity" />
+                <ScalarProperty Name="sizeS" ColumnName="sizeS" />
+                <ScalarProperty Name="sizeM" ColumnName="sizeM" />
+                <ScalarProperty Name="sizeL" ColumnName="sizeL" />
+                <ScalarProperty Name="sizeXL" ColumnName="sizeXL" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductColors">
+            <EntityTypeMapping TypeName="ZuperMartModel.ProductColor">
+              <MappingFragment StoreEntitySet="ProductColor">
+                <ScalarProperty Name="ProductColorID" ColumnName="ProductColorID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Colors" ColumnName="Colors" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSpecifications">
+            <EntityTypeMapping TypeName="ZuperMartModel.ProductSpecification">
+              <MappingFragment StoreEntitySet="ProductSpecification">
+                <ScalarProperty Name="ProductSpecificationSID" ColumnName="ProductSpecificationSID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Specifications" ColumnName="Specifications" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamMembers">
+            <EntityTypeMapping TypeName="ZuperMartModel.TeamMember">
+              <MappingFragment StoreEntitySet="TeamMember">
+                <ScalarProperty Name="TeamMemberID" ColumnName="TeamMemberID" />
+                <ScalarProperty Name="MemName" ColumnName="MemName" />
+                <ScalarProperty Name="MemStudentID" ColumnName="MemStudentID" />
+                <ScalarProperty Name="MemFBlink" ColumnName="MemFBlink" />
+                <ScalarProperty Name="MemWAlink" ColumnName="MemWAlink" />
+                <ScalarProperty Name="MemLIlink" ColumnName="MemLIlink" />
+                <ScalarProperty Name="MemGHlink" ColumnName="MemGHlink" />
+                <ScalarProperty Name="MemImgUrl" ColumnName="MemImgUrl" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wishlists">
+            <EntityTypeMapping TypeName="ZuperMartModel.Wishlist">
+              <MappingFragment StoreEntitySet="Wishlist">
+                <ScalarProperty Name="WishlistID" ColumnName="WishlistID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
