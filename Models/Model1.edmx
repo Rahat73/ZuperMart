@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ZuperMartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ZuperMartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AboutUs">
           <Key>
             <PropertyRef Name="AboutUsID" />
@@ -41,12 +41,12 @@
           <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Address" Type="int" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="ActivationCode" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ImageURL" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -217,8 +217,7 @@
             <End Role="Wishlist" EntitySet="Wishlist" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZuperMartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -258,7 +257,6 @@
           <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="Int32" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="ActivationCode" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
@@ -266,6 +264,7 @@
           <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Custome__25869641" FromRole="Customer" ToRole="Message" />
           <NavigationProperty Name="Wishlists" Relationship="Self.FK__Wishlist__Custom__31EC6D26" FromRole="Customer" ToRole="Wishlist" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -483,11 +482,11 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ZuperMartModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

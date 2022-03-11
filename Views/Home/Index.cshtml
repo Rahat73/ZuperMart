@@ -27,7 +27,7 @@
         <span class="visually-hidden">Next</span>
     </button>
     @{
-        if (@TempData["success"] != null)
+        if (@ViewBag.username != null)
         {
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right:20px;">
                 <div class="toast-header">
@@ -36,7 +36,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    @TempData["success"]
+                    Welcome @ViewBag.username
                 </div>
             </div>
         }

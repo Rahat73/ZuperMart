@@ -1,55 +1,145 @@
-﻿
+﻿@model Zuper_Mart.Models.Customer
 @{
     ViewBag.Title = "UserProfile";
 }
+
 <link href="~/Content/css/userProfile.css" rel="stylesheet" />
 <div class="Container">
     <div class="matrix">
         <div class="UserDetails col-lg-12 col-sm-6">
-            <div class="userImage">
-                <div class="col-md-6 col-lg-10">
-                    <img src="~/images/teams/mustavi.jpg" class="img-fluid rounded-circle" alt="user image">
+            <form action="/Home/Update" method="POST">
+                <div class="col-md-6 col-lg-10 userImage" id="userImage">
+                    @{
+                        if (@Model.ImageURL != null)
+                        {
+                            <img src="~/images/user/@Model.ImageURL" class="img-fluid rounded-circle" alt="user image" id="userphoto">
+                        }
+                        else
+                        {
+                            <img src="~/images/user/default.jpg" class="img-fluid rounded-circle" alt="user image" id="userphoto">
+                        }
+                    }
+
+                    <input type="file" name="ImageURL" id="imgUpload">
+                    <label for="imgUpload" id="imgUploadBtn">Choose Photo</label>
                 </div>
-            </div>
 
-            <div class="textbox">
-                <i class="fas fa-user"></i>
-                <input type="text" id="username" placeholder="Username">
-            </div>
-
-            <div class="textbox">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="email" placeholder="example@gmail.com">
-            </div>
-
-            <div class="textbox">
-                <i class="fas fa-mobile"></i>
-                <input type="text" id="phoneNumber" placeholder="880-17xxxxxxxx">
-            </div>
-
-            <div class="textbox">
-                <i class="fas fa-location-arrow"></i>
-                <input type="password" id="address" placeholder="16/3 kazi ilias, zindabazar, sylhet-3100">
-            </div>
-
-            <div class="editButton">
-                <div class="col-md-9">
-                    <input type="button" class="btn" value="Edit Profile">
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" value="@Model.UserName" name="UserName">
                 </div>
-            </div>
 
+                <div class="textbox">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" value="@Model.Email" name="Email" disabled>
+                </div>
+
+                <div class="textbox">
+                    <i class="fas fa-mobile"></i>
+                    <input type="text" id="phoneNumber" value="@Model.Phone" name="Phone">
+                </div>
+
+                <div class="textbox">
+                    <i class="fas fa-location-arrow"></i>
+                    <input type="text" id="address" value="@Model.Address" placeholder="Address" name="Address">
+                </div>
+
+                <div class="editButton">
+                    <div class="col-md-9">
+                        <input type="submit" class="btn" value="Save Profile" name="savepro" id="savepro">
+                    </div>
+                </div>
+                <input type="text" name="" id="logpassword" value="@Model.Password">
+            </form>
         </div>
     </div>
 
     <!--div outside userdetails-->
     <!-- <div class="container"> -->
-    <div class="editButton solobutton col-4">
-        <div class="col-md-9">
-            <input type="button" class="btn" value="Change Password">
+    <!-- Button trigger modal -->
+    @{
+        if (TempData["updated"] != null)
+        {
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 100px; right:30px;">
+                
+                <div class="toast-body">
+                    @TempData["updated"]
+                </div>
+            </div>
+        }
+    }
+</div>
+<div class="editButton solobutton col-lg-12 col-sm-6">
+    <div class="col-md-9">
+        <input type="button" class="btn" value="Change Password" data-bs-toggle="modal" data-bs-target="#cpModal">
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade cpmodal" id="cpModal" tabindex="-1" role="dialog" aria-labelledby="cpModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cpModalTitle">Change Password</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" onclick="document.getElementById('OldPassword').value='';document.getElementById('NewPassword').value='';document.getElementById('CPassword').value='';indicoff()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/Home/ResetPassword" method="POST">
+                    <div class="mb-3 textbox">
+                        <label for="OldPassword" class="col-form-label">
+                            Old Password<span>*</span>
+                            <div class="form-text">Password length must be 6 and must have digits,letters,characters</div>
+                        </label>
+                        <div>
+                            <i class="fas fa-lock"></i>
+                            <input onkeyup="checkop(document.getElementById('logpassword'))" type="password" class="form-control" id="OldPassword" name="OldPassword" required>
+                        </div>
+                    </div>
+                    <div class="textop"></div>
+                    <div class="mb-3 textbox">
+                        <label for="UserPassword" class="col-form-label">New Password<span>*</span></label>
+                        <div>
+                            <i class="fas fa-lock"></i>
+                            <input onkeyup="trigger()" type="password" class="form-control" id="UserPassword" name="RegisterPassword" required>
+                        </div>
+                    </div>
+                    <div class="indicator" id="indicator">
+                        <span class="weak"></span>
+                        <span class="medium"></span>
+                        <span class="strong"></span>
+                    </div>
+                    <div class="text"></div>
+                    <div class="mb-3 textbox">
+                        <label for="UserCPassword" class="col-form-label">Confirm Password<span>*</span></label>
+                        <div>
+                            <i class="fas fa-lock"></i>
+                            <input onkeyup="checkPass()" type="password" class="form-control" id="UserCPassword" name="RegisterCPassword" required>
+                        </div>
+                    </div>
+                    <div class="textc"></div>
+                    <div class="mb-3">
+                        <input type="submit" name="" value="Confirm" class="btn btn-primary" id="reg" />
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
+<!-- </div> -->
+<script>
+    window.onload = (event) => {
+        let myAlert = document.querySelector('.toast');
+        let bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+    }
+</script>
+<script src="~/Scripts/js/index.js?version=4"></script>
 <div class="empty"></div>
 
 

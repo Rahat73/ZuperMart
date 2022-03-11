@@ -51,8 +51,8 @@ namespace Zuper_Mart.Controllers
             {
                 if(customer.Status == 1)
                 {
-                    FormsAuthentication.SetAuthCookie(customer.UserName, false);
-                    TempData["success"] = "Welcome " + customer.UserName;
+                    FormsAuthentication.SetAuthCookie(customer.CustomerID.ToString(), false);
+                    TempData["customer"] = customer;
                     return RedirectToAction("Index", "Home");
                 }
                 else

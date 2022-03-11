@@ -207,6 +207,7 @@
     <Content Include="images\banner3.jpg" />
     <Content Include="images\brand.png" />
     <Content Include="images\contact-us\happy-customer1.jpg" />
+    <Content Include="images\user\default.jpg" />
     <Content Include="images\exclusive\AAA grade automatic watch armani-1 2200bdt.jpg" />
     <Content Include="images\exclusive\bg.jpg" />
     <Content Include="images\exclusive\cap-1.jpg" />
@@ -317,9 +318,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
-    <Content Include="Views\Home\UserProfile.cshtml" />
     <Content Include="Views\Home\Wishlist.cshtml" />
     <Content Include="Views\Membership\SignUpIn.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
