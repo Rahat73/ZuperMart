@@ -53,6 +53,7 @@ body {
     font-family: sans-serif;
     font-size: 15px;
     cursor: pointer;
+    /*display: none;*/
 }
 
 .UserDetails .textbox, .cpmodal .modal-dialog .modal-content .textbox {

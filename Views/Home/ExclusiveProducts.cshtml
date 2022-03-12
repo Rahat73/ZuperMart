@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Zuper_Mart.Models.Product>
 @{
     ViewBag.Title = "ExclusiveProducts";
 }
@@ -20,66 +20,24 @@
             <h2>Exclusive Products</h2>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-2">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/mask-adidas-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/cap-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/premium tshirt-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/premium shirt-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/premium jeans-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/exclusive/silk shirt-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
+        @{
+            foreach (var item in Model)
+            {
+                if (item.Sale == 0)
+                {
+                    <div class="col-lg-4 col-md-6 mb-2">
+                        <div class="card" style="width: 18rem;">
+                            <img src="~/images/products/@item.PrdImgUrl" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Price</h5>
+                                <p class="card-text">@item.PName</p>
+                                <a href="product-preview.html" class="stretched-link" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
 
 
     </div> <!--Row div end-->
@@ -92,86 +50,27 @@
         <div class="section-heading">
             <h2>On Sale</h2>
         </div>
-
-        <div class="col-lg-4 col-md-6 mb-2">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (1).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
+        @{ 
+            foreach (var item in Model)
+            {
+                if (@item.Sale > 0)
+                {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card" style="width: 18rem;">
+                        <img src="~/images/products/@item.PrdImgUrl" class="card-img-top" alt="...">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title" id="discount" style="text-align: left; color: green">@item.Sale%</h5>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">tk @item.Price</h5>
+                            <p class="card-text">@item.PName</p>
+                            <a href="index.html" class="stretched-link" target="_blank"></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (2).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (3).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (4).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (5).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="~/images/products/prd (6).jpg" class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title" id="discount">20%</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">BDT 1690</h5>
-                    <p class="card-text">Casual Shirt</p>
-                    <a href="index.html" class="stretched-link" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-
+                }
+            }
+        }
 
     </div> <!--Row div end-->
 </div> <!--cards container div end-->

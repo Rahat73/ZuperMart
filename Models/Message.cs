@@ -19,7 +19,6 @@ namespace Zuper_Mart.Models
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public string Message1 { get; set; }
-        public System.DateTime SubmitDate { get; set; }
         public Nullable<int> CustomerID { get; set; }
     
         public virtual Customer Customer { get; set; }

@@ -1,5 +1,21 @@
-﻿@{
+﻿@model Zuper_Mart.Models.AboutU
+@{
     ViewBag.Title = "Contact";
+}
+@{
+    if (@ViewBag.msgSubmit != null)
+    {
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 100px; right:30px;">
+            <div class="toast-header">
+                <img src="~/images/brand.png" class="rounded me-2" alt="..." style="width:30px;height:30px;">
+                <strong class="me-auto">ZuperMart</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewBag.msgSubmit
+            </div>
+        </div>
+    }
 }
 <!-- Page Content -->
 <div class="page-heading contact-heading header-text mb-3">
@@ -18,24 +34,24 @@
 <div class="container-fluid justify-content-center" id="contactusinfo">
     <div class="row">
         <div class="col-xl-6">
-            <img src="~/images/about-us/store.jpg" alt="" class="storePic">
+            <img src="~/@Model.StorePURL" alt="" class="storePic">
         </div>
         <div class="col-xl-6" id="contactinfo">
             <div class="text">
                 <h4><object class="icon" data="~/images/svgs/geo-alt.svg" type="image/svg+xml"></object>Adress</h4>
-                <p>Mojumdari (opposite of fulkoli) 3100 Sylhet, Sylhet Division, Bangladesh</p>
+                <p>@Model.Address</p>
             </div>
             <div class="text">
                 <h4><object class="icon" data="~/images/svgs/envelope.svg" type="image/svg+xml"></object>Email</h4>
-                <p>zupermartbd@gmail.com</p>
+                <p>@Model.Email</p>
             </div>
             <div class="text">
                 <h4><object class="icon" data="~/images/svgs/telephone.svg" type="image/svg+xml"></object>Phone</h4>
-                <p>01715-820393</p>
+                <p>@Model.Phone</p>
             </div>
             <div class="text">
                 <h4><object class="icon" data="~/images/svgs/whatsapp.svg" type="image/svg+xml"></object>WhatsApp Us</h4>
-                <p> +880 1758-535543</p>
+                <p>@Model.WhatsApp</p>
             </div>
         </div>
     </div>
@@ -56,7 +72,7 @@
                 4. Copy only URL and paste it within the src="" field below
                 -->
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.6581639011292!2d91.86912261447856!3d24.9096391494205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375055b6871dec83%3A0x31cf28bdbaa8934c!2sZuper%20mart%20bd!5e0!3m2!1sen!2sbd!4v1632077375288!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="@Model.LocationLink" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -73,36 +89,70 @@
             </div>
             <div class="col-md-8">
                 <div class="contact-form">
-                    <form id="contact" action="" method="post">
+                    <form id="contact" action="/Home/Contact" method="post">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address"
-                                           required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject"
-                                           required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message"
-                                              required=""></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                                </fieldset>
-                            </div>
+                            @{
+                                if (@ViewBag.customerInfo != null && @ViewBag.customerEmail != null && @ViewBag.customerPhone != null)
+                                {
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" value="@ViewBag.customerInfo" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" value="@ViewBag.customerEmail" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="phone" type="text" class="form-control" id="phone" placeholder="phone" value="@ViewBag.customerPhone"
+                                                   required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message"
+                                                      required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                                        </fieldset>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="phone" type="text" class="form-control" id="phone" placeholder="phone"
+                                                   required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message"
+                                                      required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                                        </fieldset>
+                                    </div>
+                                }
+                            }
                         </div>
                     </form>
                 </div>
@@ -150,7 +200,13 @@
     </div>
 </div>
 
-
+<script>
+    window.onload = (event) => {
+        let myAlert = document.querySelector('.toast');
+        let bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+    }
+</script>
 
 <!-- </div> -->
 <!-- </div>

@@ -24,6 +24,7 @@
           <Property Name="WAURL" Type="varchar" MaxLength="2048" Nullable="false" />
           <Property Name="YTURL" Type="varchar" MaxLength="2048" Nullable="false" />
           <Property Name="INSTAURL" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="2048" />
         </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -57,7 +58,6 @@
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="PhoneNo" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Message" Type="varchar" MaxLength="2048" Nullable="false" />
-          <Property Name="SubmitDate" Type="datetime" Nullable="false" />
           <Property Name="CustomerID" Type="int" />
         </EntityType>
         <EntityType Name="Product">
@@ -240,6 +240,7 @@
           <Property Name="WAURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="YTURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="INSTAURL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -275,7 +276,6 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Message1" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SubmitDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CustomerID" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Message__Custome__25869641" FromRole="Message" ToRole="Customer" />
         </EntityType>
@@ -452,6 +452,7 @@
           <EntitySetMapping Name="AboutUs">
             <EntityTypeMapping TypeName="ZuperMartModel.AboutU">
               <MappingFragment StoreEntitySet="AboutUs">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="AboutUsID" ColumnName="AboutUsID" />
                 <ScalarProperty Name="StorePURL" ColumnName="StorePURL" />
                 <ScalarProperty Name="BrandPURL" ColumnName="BrandPURL" />
@@ -503,7 +504,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
                 <ScalarProperty Name="Message1" ColumnName="Message" />
-                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>

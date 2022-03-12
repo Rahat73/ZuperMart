@@ -29,5 +29,6 @@ namespace Zuper_Mart.Models
         public string WAURL { get; set; }
         public string YTURL { get; set; }
         public string INSTAURL { get; set; }
+        public string Address { get; set; }
     }
 }

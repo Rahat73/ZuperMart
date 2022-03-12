@@ -1,8 +1,8 @@
-﻿@{
+﻿@model Zuper_Mart.Models.AboutU
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+
 
 <div class="page-heading about-heading header-text">
     <div class="container-fluid">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-6">
                 <div class="right-image" id="aboutLogo">
-                    <img src="~/images/about-us/logo_big.png" alt="">
+                    <img src="~/@Model.BrandPURL" alt="">
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
@@ -66,7 +66,7 @@
             </div>
             <div class=" col-xl-6 col-lg-12">
                 <div class="right-image">
-                    <img src="~/images/about-us/farhan-small.png" alt="">
+                    <img src="~/@Model.FounderPURL" alt="">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">

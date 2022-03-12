@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Zuper_Mart.Models.Product>
 
 <!-- Page Content -->
 <!-- Banner Starts Here -->
@@ -50,117 +50,35 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Latest Products</h2>
-                    <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
+                    <a href="@Url.Action("Products", "Home")">view all products <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_01.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Safity Boots</h4></a>
-                        <h6>৳ 4500</h6>
-                        <p>Breathable, Lightweight Waterproof. Perfect for you hiking and trekking needs.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (24)</span>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="product-item">
+                        <a href="/Home/ProductPreview/@item.ProductID"><img src="~/images/products/@item.PrdImgUrl" class="showImg" alt=""></a>
+                        <div class="down-content">
+                            <a href="/Home/ProductPreview/@item.ProductID"><h4>@item.PName</h4></a>
+                            <h6>@item.Price</h6>
+                            <p>@item.shortDescription</p>
+                            <ul class="stars">
+                                @{ 
+                                    for (int i = 1; i <= 5; i++) {
+                                        if (i <= item.PRating) {
+                                            <i class='fa fa-star text-warning'></i>
+                                        } else
+                                        {
+                                            <i class='fa fa-star text-secondary'></i>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_02.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Casual Sweats Hoodie</h4></a>
-                        <h6>$৳ 2,052</h6>
-                        <p>100% Polyester, easily washable. Suited for you casual needs.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (21)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_03.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Woolen Muffler</h4></a>
-                        <h6>৳ 660</h6>
-                        <p>Trendy and fasionable mufflers to protect you from cold winter air</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (36)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_04.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Snowmen stuffed Toys</h4></a>
-                        <h6>৳ 813</h6>
-                        <p>Ornaments to decorate you home for upcoming christmas</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (48)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_05.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Round-neck Wool Sweater</h4></a>
-                        <h6>৳ 1,300</h6>
-                        <p>soft and comfortable. Classic and basic design</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (16)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="~/images/product_06.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Hanging doll ornament</h4></a>
-                        <h6>৳ 698</h6>
-                        <p>Ornaments to decorate you home for upcoming christmas</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (32)</span>
-                    </div>
-                </div>
-            </div>
+                                    }
+
         </div>
     </div>
 </div>

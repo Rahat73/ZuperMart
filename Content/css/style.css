@@ -217,7 +217,7 @@ form .text, form .textc {
     min-width: 100%;
 }
 
-.discount {
+#discount .card-title {
     text-align: left;
     color: red;
 }
