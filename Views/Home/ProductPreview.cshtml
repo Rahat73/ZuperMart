@@ -1,4 +1,4 @@
-﻿
+﻿@model Zuper_Mart.Models.Product
 @{
     ViewBag.Title = "ProductPreview";
 }
@@ -9,7 +9,7 @@
             <div class="col-lg-5 mt-5">
                 <!--main image-->
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="~/images/product-preview/casual-shirt-1 (0).jpg" alt="Card image cap"
+                    <img class="card-img img-fluid" src="~/images/products/@Model.PrdImgUrl" alt="..."
                          id="product-detail">
                 </div>
 
@@ -23,34 +23,40 @@
                         <!--using breadcrumb to show where we are...cool-->
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="products.html">Our Products</a></li>
+                                <li class="breadcrumb-item"><a href="/Home/Products">Our Products</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Casual Shirt</li>
                             </ol>
                         </nav>
 
-                        <h1 class="h2">Men's Casual Shirt</h1>
-                        <p class="h3 py-2">৳ 1,695.00</p>
-                        <p class="py-2">
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-secondary"></i>
-                            <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
-                        </p>
+                        <h1 class="h2">@Model.PName</h1>
+                        <p class="h3 py-2">@Model.Price</p>
+                        <ul class="stars">
+                            @{
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= @Model.PRating)
+                                    {
+                                        <i class='fa fa-star text-warning'></i>
+                                    }
+                                    else
+                                    {
+                                        <i class='fa fa-star text-secondary'></i>
+                                    }
+                                }
+                            }
+                        </ul>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Brand:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>Yellow BD</strong></p>
+                                <p class="text-muted"><strong>@Model.PBrand</strong></p>
                             </li>
                         </ul>
                         <br>
                         <h6>Description:</h6>
                         <p>
-                            100% Cotton, Printed smart casual shirt for men.
-                            NB: Depending on your computer or mobile screen resolution, product color may vary slightly.
+                            @Model.longDescription
                         </p>
                         <br>
                         <ul class="list-inline">
@@ -58,14 +64,13 @@
                                 <h6>Avaliable Color :</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>Black</strong></p>
+                                <p class="text-muted"><strong>@Model.ProductColors</strong></p>
                             </li>
                         </ul>
 
                         <h6>Specification:</h6>
                         <ul class="list-unstyled pb-3">
-                            <li>Casual</li>
-                            <li>half Sleeve</li>
+                            <li>@Model.PType</li>
                             <li>100% Cotton</li>
                             <li>Printed design</li>
                             <li>Hand/machine wash</li>
@@ -73,8 +78,8 @@
 
                         </ul>
 
-                        <form action="" method="GET">
-                            <input type="hidden" name="product-title" value="Activewear">
+                        <form action="/Home/AddToWishlist" method="POST">
+                            <input type="number" name="productID" value="@Model.ProductID" style="display:none;">
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
@@ -82,10 +87,26 @@
                                             Size :
                                             <input type="hidden" name="product-size" id="product-size" value="S">
                                         </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">L</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
+                                        @{
+                                            if (@Model.sizeS != 0)
+                                            {
+                                                <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
+                                            }
+                                            if (@Model.sizeM != 0)
+                                            {
+                                                <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
+                                            }
+                                            if (@Model.sizeL != 0)
+                                            {
+                                                <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
+                                            }
+                                            if (@Model.sizeXL != 0)
+                                            {
+                                                <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
+                                            }
+
+                                        }
+
                                     </ul>
                                 </div>
                                 <div class="col-auto">
@@ -106,11 +127,22 @@
                                     <button type="submit" disabled class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                                 </span>
 
-                                <span class="col d-grid">
-                                    <button type="submit" class="btn btn-outline-danger btn-lg" name="submit" value="addtocard">
-                                        Add To Wishlist
-                                    </button>
-                                </span>
+                                @{
+                                    if (@ViewBag.ifAdded == true)
+                                    {
+                                        <span class="col d-grid">
+                                            <button type="submit" class="btn btn-outline-danger btn-lg" name="removefromwish" value="addtocard">Remove from Wishlist</button>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="col d-grid">
+                                            <button type="submit" class="btn btn-outline-danger btn-lg" name="submit" value="addtocard">
+                                                Add To Wishlist
+                                            </button>
+                                        </span>
+                                    }
+                                }
 
                             </div>
                         </form>
@@ -130,109 +162,28 @@
             <h4>Related Products</h4>
         </div>
 
-        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner text-center pb-5">
-                <div class="carousel-item active">
-                    <!--card group-1-->
-                    <div class="card-group">
-                        <div class="card">
-                            <img src="~/images/product_01.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_02.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_03.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-3">
+                        @{
+                            if (@ViewBag.ProductList != null)
+                            {
+                                foreach (var item in ViewBag.ProductList)
+                                {
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="~/images/products/@item.PrdImgUrl " class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">@item.Price</h5>
+                                            <p class="card-text">@item.PName</p>
+                                            <a href="/Home/ProductPreview/@item.ProductID" class="stretched-link" target="_blank"></a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                        <!--card group-1 ends here-->
                     </div>
-                    <!--card group-1 ends here-->
-                </div>
                 <!--carousel item 1 ended here-->
-                <div class="carousel-item">
-                    <div class="card-group">
-                        <div class="card">
-                            <img src="~/images/product_04.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_05.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_06.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card-group">
-                        <div class="card">
-                            <img src="~/images/product_01.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_02.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="~/images/product_03.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">BDT 1690</h5>
-                                <p class="card-text">Casual Shirt</p>
-                                <a href="index.html" class="stretched-link" target="_blank"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!--carousel ends here-->
-
-
-    </div>
+    </div>           
 </section>
+<script src="js/index.js?version=1"></script>
 
