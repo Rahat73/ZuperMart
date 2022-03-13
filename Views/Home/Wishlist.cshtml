@@ -25,7 +25,7 @@
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table aa-wishlist-table">
-                        <form action="/Home/Wishlist" method="post">
+                        <form action="/Home/RemoveWish2" method="post">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -44,9 +44,10 @@
                                             {
                                                 <tr>
                                                     <td>
-                                                        <a class="remove" href="/Home/Wishlist/@item.WishlistID">
+                                                        <button class="remove" type="submit" name="productID" value="@item.ProductID">
+                                                            
                                                             <fa class="fa fa-close"></fa>
-                                                        </a>
+                                                        </button>
                                                     </td>
                                                     <td><a href="/Home/ProductPreview/@item.ProductID"><img src="~/images/products/@item.Product.PrdImgUrl" alt="website template image"></a></td>
                                                     <td><a class="aa-cart-title" href="/Home/ProductPreview/@item.ProductID">@item.Product.PName</a></td>

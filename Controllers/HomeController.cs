@@ -156,6 +156,37 @@ namespace Zuper_Mart.Controllers
             return RedirectToAction("ProductPreview", new { id = productID });
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult RemoveWish(int pID)
+        {
+            if (Session["customerID"] != null)
+            {
+                int customerID = (int)Session["customerID"];
+                Wishlist wishlists = entities.Wishlists.Where(x => x.ProductID == pID && x.CustomerID == customerID).FirstOrDefault();
+                entities.Wishlists.Remove(wishlists);
+                entities.SaveChanges();
+            }
+
+            return RedirectToAction("ProductPreview", new { id = pID });
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult RemoveWish2(int productID)
+        {
+            if (Session["customerID"] != null)
+            {
+                int customerID = (int)Session["customerID"];
+                Wishlist wishlists = entities.Wishlists.Where(x => x.ProductID == productID && x.CustomerID == customerID).FirstOrDefault();
+                entities.Wishlists.Remove(wishlists);
+                entities.SaveChanges();
+                return RedirectToAction("Wishlist", "Home");
+            }
+
+            return RedirectToAction("Wishlist", "Home");
+        }
         public ActionResult Team()
         {
 
@@ -210,19 +241,25 @@ namespace Zuper_Mart.Controllers
     
         public ActionResult ProductPreview(int id)
         {
-            int customerID = (int)Session["customerID"];
+            
             var pData = entities.Products.Where(temp=> temp.ProductID == id).FirstOrDefault();
             var pType = pData.PType;
             List<Product> products = entities.Products.Where(temp => temp.PType.Equals(pType) && temp.Exclusivity.Equals(0)).ToList();
             ViewBag.ProductList = products;
-            Wishlist wishlists = entities.Wishlists.Where(x => x.ProductID == id && x.CustomerID == customerID).FirstOrDefault();
-            if( wishlists != null)
+
+            if(Session["customerID"] != null)
             {
-                ViewBag.ifAdded = true;
-            }
-            else
-            {
-                ViewBag.ifAdded = false;
+                int customerID = (int)Session["customerID"];
+                Wishlist wishlists = entities.Wishlists.Where(x => x.ProductID == id && x.CustomerID == customerID).FirstOrDefault();
+                if (wishlists != null)
+                {
+                    ViewBag.ifAdded = true;
+                }
+                else
+                {
+                    ViewBag.ifAdded = false;
+                }
+                
             }
             return View(pData);
         }

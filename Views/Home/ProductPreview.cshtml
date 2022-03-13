@@ -78,8 +78,7 @@
 
                         </ul>
 
-                        <form action="/Home/AddToWishlist" method="POST">
-                            <input type="number" name="productID" value="@Model.ProductID" style="display:none;">
+                        <div>
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
@@ -130,23 +129,29 @@
                                 @{
                                     if (@ViewBag.ifAdded == true)
                                     {
-                                        <span class="col d-grid">
-                                            <button type="submit" class="btn btn-outline-danger btn-lg" name="removefromwish" value="addtocard">Remove from Wishlist</button>
-                                        </span>
+                                        <form action="/Home/RemoveWish" method="POST">
+                                            <input type="number" name="pID" value="@Model.ProductID" style="display:none;">
+                                            <span class="col d-grid">
+                                                <button type="submit" class="btn btn-outline-danger btn-lg" name="removefromwish" value="addtocard">Remove from Wishlist</button>
+                                            </span>
+                                        </form>
                                     }
                                     else
                                     {
-                                        <span class="col d-grid">
-                                            <button type="submit" class="btn btn-outline-danger btn-lg" name="submit" value="addtocard">
-                                                Add To Wishlist
-                                            </button>
-                                        </span>
+                                        <form action="/Home/AddToWishlist" method="POST">
+                                            <input type="number" name="productID" value="@Model.ProductID" style="display:none;">
+                                            <span class="col d-grid">
+                                                <button type="submit" class="btn btn-outline-danger btn-lg" name="submit" value="addtocard">
+                                                    Add To Wishlist
+                                                </button>
+                                            </span>
+                                        </form>
                                     }
                                 }
 
                             </div>
-                        </form>
 
+                        </div>
                     </div>
                 </div>
             </div>

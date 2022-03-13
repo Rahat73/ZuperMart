@@ -251,7 +251,6 @@
     <Content Include="images\svgs\telephone.svg" />
     <Content Include="images\svgs\whatsapp.svg" />
     <Content Include="images\teams\arman.jpg" />
-    <Content Include="images\teams\mustavi.jpg" />
     <Content Include="images\undraw_profile.svg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
